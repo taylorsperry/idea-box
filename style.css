@@ -45,7 +45,8 @@ h1 span {
 }
 
 input,
-textarea {
+textarea,
+.idea-card {
   height: 50px;
   width: 100%;
   border-radius: 5px;
@@ -73,11 +74,13 @@ textarea {
   margin-right: 15px;
 }
 
-section#idea-gen {
+section#idea-gen,
+section.content {
   width: 100%;
-  /*background-color: #EAEAEA;*/
+  background-color: #EAEAEA;
   display: flex;
   justify-content: center;
+  padding-bottom: 35px;
 }
 
 form.content {
@@ -113,4 +116,46 @@ label {
   border-radius: 5px;
   font-size: 30px;
   font-weight: 800;
+}
+
+section.content {
+  background: #FFFFFF;
+}
+
+
+article.idea-card {
+  width: 56%;
+  height: 100%;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: solid #D2CCCD;
+  height: 50px;
+}
+
+#card-footer-left {
+  width: 45%;
+  display: flex;
+  align-items: center;
+  border: solid grey;
+}
+
+#card-footer-right {
+  width: 45%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border: solid grey;
+}
+
+button#down-btn,
+button#up-btn,
+button#delete-btn {
+  width: 15px;
+  height: 15px;
+  border-radius: 50px;
+  border: hidden;
 }
