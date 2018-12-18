@@ -44,7 +44,8 @@ h1 span {
   color: #B2A1B1
 }
 
-input {
+input,
+textarea {
   height: 50px;
   width: 100%;
   border-radius: 5px;
@@ -52,6 +53,7 @@ input {
   padding-left: 10px;
   font-size: 25px;
   font-weight: 300;
+  resize: none;
 }
 
 .search-bar {
@@ -88,11 +90,27 @@ form.content {
 
 #title,
 #body {
-  margin-top: 10px;
+  margin-top: 8px;
   height: 55px;
+}
+
+#body {
+  height: 150px;
+  display: flex;
+  text-align: ;
 }
 
 label {
   margin-top: 32px;  
   color: #7C7879;
+}
+
+#save-btn {
+  margin-top: 20px;
+  height: 60px;
+  color: #FFFFFF;
+  background-color: #6E646B;
+  border-radius: 5px;
+  font-size: 30px;
+  font-weight: 800;
 }
