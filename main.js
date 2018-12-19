@@ -14,10 +14,9 @@ var searchButton = document.querySelector("#search-btn");
 
 var saveButton = document.querySelector("#save-btn");
 
-
+var ideaArray = [];
 
 saveButton.addEventListener("click", addCard);
-
 
 //////Functions/////
 
@@ -44,7 +43,8 @@ function addCard(e) {
       </div>
      `;
   newCard.insertBefore(cardField, newCard.firstChild);
-  
+  var ideaNew = new Idea(Date.now(), titleInput.value, bodyInput.value);
+  ideaArray.push(ideaNew);
   // how do we append an html element to our 'bottom' section?
   // and, how do we put our titleInput variable in that HTML?
 
