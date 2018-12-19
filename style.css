@@ -6,7 +6,7 @@
 }
 
 body {
-  background-image: url(media/back-placeholder.jpg);
+  /*background-image: url(media/back-placeholder.jpg);*/
   background-repeat: no-repeat;
   background-size: 100%;
 }
@@ -120,6 +120,8 @@ label {
 
 section.content {
   background: #FFFFFF;
+  flex-direction: column;
+  align-items: center;
 }
 
 
@@ -128,19 +130,35 @@ article.idea-card {
   height: 100%;
 }
 
-footer {
+.card-field {
+  width: 56%;
+  border-radius: 5px;
+  border: solid #D2CCCD 3px;
+  margin-top: 30px;
+}
+
+.div-top {
+  padding: 15px;
+}
+
+.div-top div p {
+  margin-top: 5px;
+}
+
+.div-bottom {
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-top: solid #D2CCCD;
   height: 50px;
+  padding: 5px;
 }
 
 #card-footer-left {
   width: 45%;
   display: flex;
   align-items: center;
-  border: solid grey;
+  /*border: solid grey;*/
 }
 
 #card-footer-right {
@@ -148,14 +166,22 @@ footer {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  border: solid grey;
+  /*border: solid grey;*/
 }
 
 button#down-btn,
 button#up-btn,
 button#delete-btn {
-  width: 15px;
-  height: 15px;
+  width: 30px;
+  height: 30px;
   border-radius: 50px;
   border: hidden;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.card-field div aside p {
+  margin-left: 10px;
+  font-weight: 800;
+  font-size: 20px;
 }

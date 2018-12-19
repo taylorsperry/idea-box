@@ -28,10 +28,11 @@ function addCard(e) {
   var newCard = document.querySelector("#bottom");
   cardField.className = "card-field";
   cardField.innerHTML = 
-  `<article class="idea-card">
-      <h2 id="title-output">${titleInput.value}</h2>
-      <p id="body-output">${bodyInput.value}</p>
-      <div>
+     `<div class="div-top">
+        <h2 id="title-output">${titleInput.value}</h2>
+        <p id="body-output">${bodyInput.value}</p>
+      </div>
+      <div class="div-bottom">
         <aside id="card-footer-left">
           <button id="down-btn"><img src="media/downvote.svg"></button>
           <button id="up-btn"><img src="media/upvote.svg"></button>
@@ -41,8 +42,7 @@ function addCard(e) {
           <button id="delete-btn"><img src="media/delete.svg"></button>
         </aside>
       </div>
-    </article>
-  `;
+     `;
   newCard.insertBefore(cardField, newCard.firstChild);
   
   // how do we append an html element to our 'bottom' section?
