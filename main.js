@@ -44,16 +44,9 @@ function addCard(e) {
      `;
   newCard.insertBefore(cardField, newCard.firstChild);
   var ideaNew = new Idea(Date.now(), titleInput.value, bodyInput.value);
+  ideaNew.saveToStorage();
   ideaArray.push(ideaNew);
-  // how do we append an html element to our 'bottom' section?
-  // and, how do we put our titleInput variable in that HTML?
-
-  // newCard.appendChild(newTitle);
-
-
-  // var currentCard = document.getElementById("bottom");
-  // document.body.insertBefore(newCard, currentCard)
-  // titleOutput.innerText = titleInput.value;
-  // bodyOutput.innerText = bodyInput.value;
 }
+
+
 

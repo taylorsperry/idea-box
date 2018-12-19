@@ -7,18 +7,20 @@ class Idea {
   }
 
   saveToStorage() {
-    // take the object just created and stringify it to make it a string
+    var stringIdea = JSON.stringify(this);
+    localStorage.setItem(this.id, stringIdea);
   }
 
   deleteFromStorage() {
-
+// go for the this.id maaaan
   }
 
   updateContent() {
+// go for the this.id maaaan
 
   }
 
   updateQuality() {
-
+// go for the this.id maaaan
   }
 }
