@@ -14,10 +14,9 @@ var searchButton = document.querySelector("#search-btn");
 
 var saveButton = document.querySelector("#save-btn");
 
-
+var ideaArray = [];
 
 saveButton.addEventListener("click", addCard);
-
 
 //////Functions/////
 
@@ -44,16 +43,10 @@ function addCard(e) {
       </div>
      `;
   newCard.insertBefore(cardField, newCard.firstChild);
-  
-  // how do we append an html element to our 'bottom' section?
-  // and, how do we put our titleInput variable in that HTML?
-
-  // newCard.appendChild(newTitle);
-
-
-  // var currentCard = document.getElementById("bottom");
-  // document.body.insertBefore(newCard, currentCard)
-  // titleOutput.innerText = titleInput.value;
-  // bodyOutput.innerText = bodyInput.value;
+  var ideaNew = new Idea(Date.now(), titleInput.value, bodyInput.value);
+  ideaNew.saveToStorage();
+  ideaArray.push(ideaNew);
 }
+
+
 
