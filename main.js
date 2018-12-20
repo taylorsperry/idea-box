@@ -4,22 +4,18 @@ var searchInput = document.querySelector(".search-bar");
 
 var titleInput = document.querySelector("#title");
 
-// var titleOutput = document.querySelector("#title-output");
-
 var bodyInput = document.querySelector("#body");
-
-// var bodyOutput = document.querySelector("#body-output");
 
 var searchButton = document.querySelector("#search-btn");
 
 var saveButton = document.querySelector("#save-btn");
 
 var ideaArray = [];
-console.log(ideaArray + "inside array");
-console.log(localStorage)
+console.log(localStorage);
 
+
+//Event Listeners//
 saveButton.addEventListener("click", uponSaveClick);
-
 
 //////Functions/////
 
@@ -27,16 +23,27 @@ saveButton.addEventListener("click", uponSaveClick);
 reloadCards();
 
 function reloadCards() {
+
  Object.keys(localStorage).forEach(function(key) {
-  addCard(JSON.parse(localStorage.getItem(key)));
+  var thisCard = JSON.parse(localStorage.getItem(key))
+  addCard(thisCard);
+  
+  var newIdea = new Idea(thisCard.id, thisCard.title, thisCard.body);
+  ideaArray.push(newIdea);
  })
+
 }
 
 function uponSaveClick(e) {
   e.preventDefault();
-  addCard();
-  addToStorage();
-}
+  // addToStorage();
+  var newIdea = new Idea(Date.now(), titleInput.value, bodyInput.value);
+  newIdea.saveToStorage();
+  ideaArray.push(newIdea);
+  console.log(ideaArray);
+
+  addCard(newIdea);
+} 
 
 // appends cards to 'bottom' section
 function addCard(idea) {
@@ -45,8 +52,8 @@ function addCard(idea) {
   cardField.className = "card-field";
   cardField.innerHTML = 
      `<div class="div-top">
-        <h2 id="title-output">${titleInput.value}</h2>
-        <p id="body-output">${bodyInput.value}</p>
+        <h2 id="title-output">${idea.title}</h2>
+        <p id="body-output">${idea.body}</p>
       </div>
       <div class="div-bottom">
         <aside id="card-footer-left">
@@ -63,12 +70,12 @@ function addCard(idea) {
 }
 
 //adds card to storage
-function addToStorage() {
-  var newIdea = new Idea(Date.now(), titleInput.value, bodyInput.value);
-  newIdea.saveToStorage();
-  ideaArray.push(newIdea);
-  console.log(ideaArray);
-}
+// function addToStorage() {
+//   var newIdea = new Idea(Date.now(), titleInput.value, bodyInput.value);
+//   newIdea.saveToStorage();
+//   ideaArray.push(newIdea);
+//   console.log(ideaArray);
+// }
 
 
 
