@@ -15,14 +15,31 @@ var searchButton = document.querySelector("#search-btn");
 var saveButton = document.querySelector("#save-btn");
 
 var ideaArray = [];
+console.log(ideaArray + "inside array");
+console.log(localStorage)
 
-saveButton.addEventListener("click", addCard);
+saveButton.addEventListener("click", uponSaveClick);
+
 
 //////Functions/////
 
-// appends cards to 'bottom' section
-function addCard(e) {
+//reload cards
+reloadCards();
+
+function reloadCards() {
+ Object.keys(localStorage).forEach(function(key) {
+  addCard(JSON.parse(localStorage.getItem(key)));
+ })
+}
+
+function uponSaveClick(e) {
   e.preventDefault();
+  addCard();
+  addToStorage();
+}
+
+// appends cards to 'bottom' section
+function addCard(idea) {
   var cardField = document.createElement("section");
   var newCard = document.querySelector("#bottom");
   cardField.className = "card-field";
@@ -43,10 +60,16 @@ function addCard(e) {
       </div>
      `;
   newCard.insertBefore(cardField, newCard.firstChild);
-  var ideaNew = new Idea(Date.now(), titleInput.value, bodyInput.value);
-  ideaNew.saveToStorage();
-  ideaArray.push(ideaNew);
 }
+
+//adds card to storage
+function addToStorage() {
+  var newIdea = new Idea(Date.now(), titleInput.value, bodyInput.value);
+  newIdea.saveToStorage();
+  ideaArray.push(newIdea);
+  console.log(ideaArray);
+}
+
 
 
 
