@@ -57,12 +57,15 @@ function addCard(idea) {
       </div>
       <div class="div-bottom">
         <aside id="card-footer-left">
-          <button id="down-btn"><img src="media/downvote.svg"></button>
-          <button id="up-btn"><img src="media/upvote.svg"></button>
+          <button id="down-btn"><img src="media/downvote.svg">
+          <div class="overlay"></div></button>
+          <button id="up-btn"><img src="media/upvote.svg">
+          <div class="overlay"></div></button>
           <p>Quality: <span></span></p>
         </aside>
         <aside id="card-footer-right">
-          <button id="delete-btn"><img src="media/delete.svg"></button>
+          <button id="delete-btn"><img src="media/delete.svg">
+            <div class="overlay"></div></button>
         </aside>
       </div>
      `;

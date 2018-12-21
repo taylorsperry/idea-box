@@ -1,32 +1,80 @@
+      /*---GENERAL---*/
+
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
   font-family: Open Sans;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  /*background-image: url(media/back-placeholder.jpg);*/
   background-repeat: no-repeat;
   background-size: 100%;
 }
 
-header {
-  /*border: solid black 3px;*/
+input:focus,
+textarea:focus {
+  outline: none;
+}
+
+#title:hover,
+#body:hover {
+  border-color: #6e646b;
+}
+
+input::placeholder,
+textarea::placeholder {
+  transition: all .2s ease;
+}
+
+input:focus::placeholder,
+textarea:focus::placeholder {
+  color: white;
+}
+
+textarea,
+input {
+  transition: all .2s ease;
+}
+
+textarea {
+  padding: 5px;
+}
+
+/*---INPUTS---*/
+input,
+textarea,
+.idea-card {
+  border-radius: 5px;
+  border: solid #D2CCCD 3px;
+  font-size: 25px;
+  font-weight: 300;
+  height: 50px;
+  padding-left: 10px;
+  resize: none;
   width: 100%;
-  height: 105px;
-  display: flex;
-  justify-content: space-between;
+}
+
+
+      /*---HEADER---*/
+
+header {
   background: #524649;
+  display: flex;
+  align-items: center;
+  height: 105px;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  width: 100%;
 }
 
 .header-items {
-  width: 35%;
-  margin: 1rem;
-  /*border: solid black 3px;*/
+  align-items: center;
   display: flex;
   justify-content: flex-end;
-  align-items: center;
+  margin: 1rem;
+  width: 35%;
 }
 
 #logo {
@@ -41,46 +89,81 @@ h1 {
 }
 
 h1 span {
-  color: #B2A1B1
+  color: #B2A1B1;
 }
 
-input,
-textarea,
-.idea-card {
-  height: 50px;
+div.hamburger {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+div.burger {
   width: 100%;
-  border-radius: 5px;
-  border: solid #D2CCCD 3px;
-  padding-left: 10px;
-  font-size: 25px;
-  font-weight: 300;
-  resize: none;
+  height: 20%;
+  background: #D2CCCD;
+  border-radius: 2px;
+  transition: all .2s ease;
+}
+
+div.hamburger:hover .burger {
+  /*background: #b6b0b1;*/
+  background: #6e646b;
 }
 
 .search-bar {
-  width: 370px;
   border-radius: 5px 0px 0px 5px;
+  transition: all .2s ease;
+  width: 370px;
 }
 
 #search-btn {
-  font-size: 25px;
-  height: 50px;
-  width: 50px;
-  text-align: center;
+  background: #D2CCCD;
   border-radius: 0px 5px 5px 0px;
   border: solid #D2CCCD 3px 3px 3px 0px;
-  background: #D2CCCD;
   color: #FFFFFF;
+  font-size: 25px;
+  height: 50px;
   margin-right: 15px;
+  text-align: center;
+  transition: all .2s ease;
+  width: 50px;
+}
+
+.search-bar-ghost {
+  display: flex;
+}
+
+.search-bar-ghost:hover #search-btn,
+.search-bar-ghost:hover .search-bar {
+  border-color: #b6b0b1;
+}
+
+.search-bar-ghost:hover #search-btn {
+  background: #b6b0b1;
+}
+
+#search-btn:hover {
+  color: #524649;
+}
+
+.search-bar::placeholder {
+  transition: all .2s ease;
+}
+
+.search-bar:focus::placeholder {
+  color: white;
 }
 
 section#idea-gen,
 section.content {
-  width: 100%;
   background-color: #EAEAEA;
   display: flex;
   justify-content: center;
   padding-bottom: 35px;
+  width: 100%;
 }
 
 form.content {
@@ -88,53 +171,66 @@ form.content {
   flex-direction: column;
   font-size: 30px;
   width: 56%;
-  /*margin-top: 32px;*/
 }
 
 #title,
 #body {
-  margin-top: 8px;
   height: 55px;
+  margin-top: 8px;
 }
 
 #body {
-  height: 150px;
   display: flex;
+  height: 150px;
   text-align: ;
 }
 
 label {
-  margin-top: 32px;  
   color: #7C7879;
+  margin-top: 32px;  
 }
 
 #save-btn {
-  margin-top: 20px;
-  height: 60px;
-  color: #FFFFFF;
   background-color: #6E646B;
   border-radius: 5px;
+  color: #FFFFFF;
   font-size: 30px;
   font-weight: 800;
+  height: 60px;
+  margin-top: 20px;
+  transition: all .2s ease;
+}
+
+#save-btn:hover {
+  background: #524749;
+  color: #eaeaea;
 }
 
 section.content {
+  align-items: center;
   background: #FFFFFF;
   flex-direction: column;
-  align-items: center;
 }
 
 
+      /*---IDEA CARDS---*/
+
 article.idea-card {
-  width: 56%;
   height: 100%;
+  width: 56%;
 }
 
 .card-field {
-  width: 56%;
   border-radius: 5px;
   border: solid #D2CCCD 3px;
   margin-top: 30px;
+  width: 56%;
+  transition: all .2s ease;
+}
+
+.card-field:hover,
+.card-field:hover .div-bottom {
+  border-color: #6e646b;
 }
 
 .div-top {
@@ -146,42 +242,64 @@ article.idea-card {
 }
 
 .div-bottom {
-  display: flex;
   align-items: center;
-  justify-content: space-between;
   border-top: solid #D2CCCD;
+  display: flex;
   height: 50px;
+  justify-content: space-between;
   padding: 5px;
 }
 
 #card-footer-left {
-  width: 45%;
-  display: flex;
   align-items: center;
-  /*border: solid grey;*/
+  display: flex;
+  width: 45%;
 }
 
 #card-footer-right {
-  width: 45%;
+  align-items: center;
   display: flex;
   justify-content: flex-end;
-  align-items: center;
-  /*border: solid grey;*/
+  width: 45%;
 }
 
 button#down-btn,
 button#up-btn,
 button#delete-btn {
-  width: 30px;
-  height: 30px;
   border-radius: 50px;
   border: hidden;
+  height: 30px;
   margin-left: 10px;
   margin-right: 10px;
+  width: 30px;
+  position: relative;
+}
+
+button#down-btn:hover,
+button#up-btn:hover,
+button#delete-btn:hover {
+  /*background-color: #b6b0b1;*/
+  background-color: white;
+}
+
+div.overlay {
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+  background-color: black;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all .2s ease;
+}
+
+div.overlay:hover {
+  opacity: 0.2;
 }
 
 .card-field div aside p {
-  margin-left: 10px;
-  font-weight: 800;
   font-size: 20px;
+  font-weight: 800;
+  margin-left: 10px;
 }
