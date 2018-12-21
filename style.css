@@ -110,26 +110,61 @@ div.burger {
 }
 
 div.hamburger:hover .burger {
-  /*background: #b6b0b1;*/
   background: #6e646b;
 }
 
-.drop-container {
-  width: 200px;
-  height: 150px;
-  display: flex;
-  flex-direction: column;
-  border: solid black 1px;
-  position: relative;
-  z-index: -100;
-  top: 105px;
-}
+/*----------------------------------*/
 
 .dropdown {
-  width: 100%;
-  height: 30%;
-  border: none;
+  position: relative;
+  display: inline-block;
 }
+
+.drop-container {
+  display: none;
+  position: absolute;
+  transition: all .2s ease;
+  right: 0;
+}
+
+.dropdown:hover .drop-container {
+  padding-top: 35px;
+  display: block;
+}
+
+.genius-btn,
+.plausible-btn,
+.swill-btn {
+  width: 200px;
+  height: 50px;
+  background: #d2cccd;
+  color: #FFF;
+  transition: all .2s ease;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 5px;
+  font-weight: 800;
+}
+
+.genius-btn:hover,
+.plausible-btn:hover,
+.swill-btn:hover {
+  width: 200px;
+  height: 50px;
+  background: #6e646b;
+  color: #d2cccd;
+}
+
+.genius-btn:focus,
+.plausible-btn:focus,
+.swill-btn:focus {
+  outline: none;
+  color: #6e646b;
+  background: #524649;
+}
+
+/*-------------------------------------*/
 
 .search-bar {
   border-radius: 5px 0px 0px 5px;
