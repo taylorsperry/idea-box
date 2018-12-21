@@ -67,6 +67,7 @@ header {
   position: sticky;
   top: 0;
   width: 100%;
+  z-index: 1;
 }
 
 .header-items {
@@ -113,6 +114,23 @@ div.hamburger:hover .burger {
   background: #6e646b;
 }
 
+.drop-container {
+  width: 200px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  border: solid black 1px;
+  position: relative;
+  z-index: -100;
+  top: 105px;
+}
+
+.dropdown {
+  width: 100%;
+  height: 30%;
+  border: none;
+}
+
 .search-bar {
   border-radius: 5px 0px 0px 5px;
   transition: all .2s ease;
@@ -153,9 +171,9 @@ div.hamburger:hover .burger {
   transition: all .2s ease;
 }
 
-.search-bar:focus::placeholder {
+/*.search-bar:focus::placeholder {
   color: white;
-}
+}*/
 
 section#idea-gen,
 section.content {
@@ -228,8 +246,8 @@ article.idea-card {
   transition: all .2s ease;
 }
 
-.card-field:hover,
-.card-field:hover .div-bottom {
+.card-field:hover .div-bottom,
+.card-field:hover {
   border-color: #6e646b;
 }
 
@@ -273,6 +291,7 @@ button#delete-btn {
   margin-right: 10px;
   width: 30px;
   position: relative;
+  /*z-index: 0;*/
 }
 
 button#down-btn:hover,
