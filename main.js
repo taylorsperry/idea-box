@@ -41,8 +41,8 @@ function uponSaveClick(e) {
   newIdea.saveToStorage();
   ideaArray.push(newIdea);
   console.log(ideaArray);
-
   addCard(newIdea);
+  document.querySelector(".content").reset();
 } 
 
 // appends cards to 'bottom' section
