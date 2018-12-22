@@ -67,6 +67,7 @@ header {
   position: sticky;
   top: 0;
   width: 100%;
+  z-index: 1;
 }
 
 .header-items {
@@ -109,9 +110,61 @@ div.burger {
 }
 
 div.hamburger:hover .burger {
-  /*background: #b6b0b1;*/
   background: #6e646b;
 }
+
+/*----------------------------------*/
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.drop-container {
+  display: none;
+  position: absolute;
+  transition: all .2s ease;
+  right: 0;
+}
+
+.dropdown:hover .drop-container {
+  padding-top: 35px;
+  display: block;
+}
+
+.genius-btn,
+.plausible-btn,
+.swill-btn {
+  width: 200px;
+  height: 50px;
+  background: #d2cccd;
+  color: #FFF;
+  transition: all .2s ease;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 5px;
+  font-weight: 800;
+}
+
+.genius-btn:hover,
+.plausible-btn:hover,
+.swill-btn:hover {
+  width: 200px;
+  height: 50px;
+  background: #6e646b;
+  color: #d2cccd;
+}
+
+.genius-btn:focus,
+.plausible-btn:focus,
+.swill-btn:focus {
+  outline: none;
+  color: #6e646b;
+  background: #524649;
+}
+
+/*-------------------------------------*/
 
 .search-bar {
   border-radius: 5px 0px 0px 5px;
@@ -153,9 +206,9 @@ div.hamburger:hover .burger {
   transition: all .2s ease;
 }
 
-.search-bar:focus::placeholder {
+/*.search-bar:focus::placeholder {
   color: white;
-}
+}*/
 
 section#idea-gen,
 section.content {
@@ -228,8 +281,8 @@ article.idea-card {
   transition: all .2s ease;
 }
 
-.card-field:hover,
-.card-field:hover .div-bottom {
+.card-field:hover .div-bottom,
+.card-field:hover {
   border-color: #6e646b;
 }
 
@@ -273,6 +326,7 @@ button#delete-btn {
   margin-right: 10px;
   width: 30px;
   position: relative;
+  /*z-index: 0;*/
 }
 
 button#down-btn:hover,
