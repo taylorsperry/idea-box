@@ -64,7 +64,7 @@ function addCard(idea) {
           <div class="overlay"></div></button>
           <button id="up-btn"><img src="media/upvote.svg">
           <div class="overlay"></div></button>
-          <p>Quality: <span></span></p>
+          <p>Quality: <span class="quality">${idea.quality}</span></p>
         </aside>
         <aside id="card-footer-right">
           <button data-id="${idea.id}" onclick="deleteCard(${idea.id})" id="delete-btn" class="delete"><img src="media/delete.svg">
