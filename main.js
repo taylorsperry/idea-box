@@ -16,6 +16,8 @@ console.log(localStorage);
 
 //Event Listeners//
 saveButton.addEventListener("click", uponSaveClick);
+document.querySelector("#bottom").addEventListener("click", deleteCard);
+//classList THEN call deleteCard function / up / down vote functions
 
 //////Functions/////
 
@@ -51,7 +53,8 @@ function addCard(idea) {
   var newCard = document.querySelector("#bottom");
   cardField.className = "card-field";
   cardField.innerHTML = 
-     `<div class="div-top">
+     `<div>
+     <div class="div-top">
         <h2 id="title-output">${idea.title}</h2>
         <p id="body-output">${idea.body}</p>
       </div>
@@ -61,12 +64,13 @@ function addCard(idea) {
           <div class="overlay"></div></button>
           <button id="up-btn"><img src="media/upvote.svg">
           <div class="overlay"></div></button>
-          <p>Quality: <span></span></p>
+          <p>Quality: <span class="quality">${idea.quality}</span></p>
         </aside>
         <aside id="card-footer-right">
-          <button id="delete-btn"><img src="media/delete.svg">
+          <button data-id="${idea.id}" onclick="deleteCard(${idea.id})" id="delete-btn" class="delete"><img src="media/delete.svg">
             <div class="overlay"></div></button>
         </aside>
+      </div>
       </div>
      `;
   newCard.insertBefore(cardField, newCard.firstChild);
@@ -80,6 +84,24 @@ function addCard(idea) {
 //   console.log(ideaArray);
 // }
 
+//delete card
 
+function deleteCard(event) {
+  if (event.target.classList.contains("delete")) {
+  event.target.parentElement.parentElement.parentElement.remove();
+  }
+  console.log("delete button clicked");
+}
+  // var index = ideaArray.indexOf(function(ideaID) {
+  //   return ideaID;
+  // });
+
+  // ideaArray.splice(index, 1);
+
+  // ideaArray[index].deleteFromStorage(cardToDelete.id);
+
+  // var deletedCard = document.getElementById(ideaID);
+
+  // deletedCard.parentElement.remove();
 
 
