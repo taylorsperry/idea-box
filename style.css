@@ -4,7 +4,6 @@
   box-sizing: border-box;
   font-family: Open Sans;
   margin: 0;
-  padding: 0;
 }
 
 body {
@@ -206,10 +205,6 @@ div.hamburger:hover .burger {
   transition: all .2s ease;
 }
 
-/*.search-bar:focus::placeholder {
-  color: white;
-}*/
-
 section#idea-gen,
 section.content {
   background-color: #EAEAEA;
@@ -326,13 +321,12 @@ button#delete-btn {
   margin-right: 10px;
   width: 30px;
   position: relative;
-  /*z-index: 0;*/
+  padding: 0;
 }
 
 button#down-btn:hover,
 button#up-btn:hover,
 button#delete-btn:hover {
-  /*background-color: #b6b0b1;*/
   background-color: white;
 }
 
@@ -356,4 +350,125 @@ div.overlay:hover {
   font-size: 20px;
   font-weight: 800;
   margin-left: 10px;
+}
+
+
+/*----------MEDIA QUERIES----------*/
+
+
+/*-----iPAD SIZE-----*/
+@media only screen and (max-width:960px) {
+
+  /*---HEADER---*/
+  header {
+    align-items: center;
+    height: 100%;
+    justify-content: flex-start;
+    position: sticky;
+    top: 0;
+    flex-direction: column;
+  }
+
+  .header-items {
+    flex-direction: column;
+    justify-content: center;
+    margin: 0;
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  #logo {
+    justify-content: center;
+    margin-left: 0;
+    width: 95%;
+  }
+
+  h1 {
+    font-size: 12vw;
+  }
+
+  div.hamburger {
+    display: none;
+  }
+
+  .search-bar {
+    width: 100%;
+  }
+
+  #search-btn {
+    margin-right: 0;
+  }
+
+  .search-bar-ghost {
+    justify-content: center;
+    width: 95%;
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .drop-container {
+    display: block;
+    position: relative;
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .dropdown:hover .drop-container {
+    padding-top: 0;
+    display: flex;
+  }
+
+  .genius-btn,
+  .plausible-btn,
+  .swill-btn {
+    width: 32%;
+  }
+
+  form.content {
+    display: flex;
+    flex-direction: column;
+    font-size: 30px;
+    width: 95%;
+  }
+
+  .card-field {
+    width: 95%;
+  }
+}
+
+/*-----PHONE SIZE-----*/
+@media only screen and (max-width:700px) {
+
+  header {
+    position: relative;
+  }
+
+  /*---QUALITY SORT BUTTONS---*/
+  .drop-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .genius-btn,
+  .plausible-btn,
+  .swill-btn {
+    width: 100%;
+    font-size: 5vw;
+    margin-top: 15px;
+  }
+
+  .genius-btn:hover,
+  .plausible-btn:hover,
+  .swill-btn:hover {
+    width: 100%;
+  }
 }
