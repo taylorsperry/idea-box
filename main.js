@@ -16,7 +16,7 @@ console.log(localStorage);
 
 //Event Listeners//
 saveButton.addEventListener("click", uponSaveClick);
-document.querySelector("#bottom").addEventListener("click", deleteCard);
+document.querySelector("#bottom").addEventListener("click", manipulateCard);
 //classList THEN call deleteCard function / up / down vote functions
 
 //////Functions/////
@@ -68,7 +68,7 @@ function addCard(idea) {
         </aside>
         <aside id="card-footer-right">
           <button data-id="${idea.id}" onclick="deleteCard(${idea.id})" id="delete-btn" class="delete"><img src="media/delete.svg">
-            <div class="overlay"></div></button>
+            <div class="overlay delete"></div></button>
         </aside>
       </div>
       </div>
@@ -84,14 +84,16 @@ function addCard(idea) {
 //   console.log(ideaArray);
 // }
 
-//delete card
-
-function deleteCard(event) {
+function manipulateCard(event) {
   if (event.target.classList.contains("delete")) {
-  event.target.parentElement.parentElement.parentElement.remove();
+    deleteCard();
   }
-  console.log("delete button clicked");
 }
+
+function deleteCard() {
+  event.target.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
+}
+
   // var index = ideaArray.indexOf(function(ideaID) {
   //   return ideaID;
   // });
