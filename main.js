@@ -10,15 +10,39 @@ var searchButton = document.querySelector("#search-btn");
 
 var saveButton = document.querySelector("#save-btn");
 
+// var upButton = document.querySelector("#up-btn");
+
+var createdIdeaCards = document.querySelector("#bottom");
+
 var ideaArray = [];
 console.log(localStorage);
 
 var qualitiesArray = ["Swill", "Plausible, Genius"];
 
+function upQuality(event) {
+  // var cardQuality = localStorage.getItem(event.target.parentElement.parentElement.parentElement);
+if (event.target.id === "up") {
+    var quality = event.target.parentElement.nextSibling.nextSibling.innerText 
+      if (quality === "Quality: Swill") {
+        event.target.parentElement.nextSibling.nextSibling.innerText = "Quality: Plausible" 
+      } else if (quality === "Quality: Plausible") {
+        event.target.parentElement.nextSibling.nextSibling.innerText = "Quality: Genius"
+    }
+  }
+}
+
 
 //Event Listeners//
+// upButton.addEventListener("click", upQuality);
+
 saveButton.addEventListener("click", uponSaveClick);
-document.querySelector("#bottom").addEventListener("click", manipulateCard);
+
+createdIdeaCards.addEventListener("click", manipulateCard);
+
+createdIdeaCards.addEventListener("click", upQuality);
+
+
+
 //classList THEN call deleteCard function / up / down vote functions
 
 //////Functions/////
@@ -35,7 +59,6 @@ function reloadCards() {
   var newIdea = new Idea(thisCard.id, thisCard.title, thisCard.body);
   ideaArray.push(newIdea);
  })
-
 }
 
 function uponSaveClick(e) {
@@ -55,23 +78,27 @@ function addCard(idea) {
   var newCard = document.querySelector("#bottom");
   cardField.className = "card-field";
   cardField.innerHTML = 
-     `<div>
-     <div class="div-top">
-        <h2 id="title-output">${idea.title}</h2>
-        <p id="body-output">${idea.body}</p>
-      </div>
-      <div class="div-bottom">
-        <aside id="card-footer-left">
-          <button id="down-btn"><img src="media/downvote.svg">
-          <div class="overlay"></div></button>
-          <button id="up-btn"><img src="media/upvote.svg">
-          <div class="overlay"></div></button>
-          <p>Quality: <span class="quality">${idea.quality}</span></p>
-        </aside>
-        <aside id="card-footer-right">
-          <button data-id="${idea.id}" onclick="deleteCard(${idea.id})" id="delete-btn" class="delete"><img src="media/delete.svg">
-            <div class="overlay delete"></div></button>
-        </aside>
+     `<div data-id='${idea.id}'>
+       <div class="div-top">
+          <h2 id="title-output">${idea.title}</h2>
+          <p id="body-output">${idea.body}</p>
+        </div>
+        <div class="div-bottom">
+          <aside id="card-footer-left">
+            <button id="down-btn">
+              <img src="media/downvote.svg">
+              <div class="overlay down" id="down"></div>
+            </button>
+            <button id="up-btn">
+              <img src="media/upvote.svg">
+              <div class="overlay" id="up"></div>
+            </button>
+            <p>Quality: ${idea.quality}</p>
+          </aside>
+          <aside id="card-footer-right">
+            <button data-id="${idea.id}" onclick="deleteCard(${idea.id})" id="delete-btn" class="delete"><img src="media/delete.svg">
+              <div class="overlay delete"></div></button>
+          </aside>
       </div>
       </div>
      `;
@@ -88,6 +115,3 @@ function deleteCard() {
   event.target.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
 }
 
-function upQuality() {
-  
-}
