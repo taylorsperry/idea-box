@@ -13,6 +13,8 @@ var saveButton = document.querySelector("#save-btn");
 var ideaArray = [];
 console.log(localStorage);
 
+var qualitiesArray = ["Swill", "Plausible, Genius"];
+
 
 //Event Listeners//
 saveButton.addEventListener("click", uponSaveClick);
