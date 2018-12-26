@@ -76,14 +76,6 @@ function addCard(idea) {
   newCard.insertBefore(cardField, newCard.firstChild);
 }
 
-//adds card to storage
-// function addToStorage() {
-//   var newIdea = new Idea(Date.now(), titleInput.value, bodyInput.value);
-//   newIdea.saveToStorage();
-//   ideaArray.push(newIdea);
-//   console.log(ideaArray);
-// }
-
 function manipulateCard(event) {
   if (event.target.classList.contains("delete")) {
     deleteCard();
@@ -93,17 +85,3 @@ function manipulateCard(event) {
 function deleteCard() {
   event.target.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
 }
-
-  // var index = ideaArray.indexOf(function(ideaID) {
-  //   return ideaID;
-  // });
-
-  // ideaArray.splice(index, 1);
-
-  // ideaArray[index].deleteFromStorage(cardToDelete.id);
-
-  // var deletedCard = document.getElementById(ideaID);
-
-  // deletedCard.parentElement.remove();
-
-
