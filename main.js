@@ -20,16 +20,25 @@ console.log(localStorage);
 var qualitiesArray = ["Swill", "Plausible, Genius"];
 
 function upQuality(event) {
-  // var cardQuality = localStorage.getItem(event.target.parentElement.parentElement.parentElement);
-if (event.target.id === "up") {
-    var quality = event.target.parentElement.nextSibling.nextSibling.innerText 
-      if (quality === "Quality: Swill") {
-        event.target.parentElement.nextSibling.nextSibling.innerText = "Quality: Plausible" 
-      } else if (quality === "Quality: Plausible") {
-        event.target.parentElement.nextSibling.nextSibling.innerText = "Quality: Genius"
+  var uniqueID = event.target.parentElement.parentElement.parentElement.parentElement.dataset.id;
+  var foundIdea = ideaArray.find(function(idea) {
+    console.log(idea.id, uniqueID)
+    return idea.id == uniqueID
+})
+    
+  if (event.target.id === "up") {
+      var quality = event.target.parentElement.nextSibling.nextSibling.innerText 
+        if (quality === "Quality: Swill") {
+          event.target.parentElement.nextSibling.nextSibling.innerText = "Quality: Plausible" 
+          foundIdea.quality = "Plausible"
+        } else if (quality === "Quality: Plausible") {
+          event.target.parentElement.nextSibling.nextSibling.innerText = "Quality: Genius"
+          foundIdea.quality = "Genius"
+      }
     }
-  }
+  foundIdea.saveToStorage()
 }
+
 
 
 //Event Listeners//
@@ -78,7 +87,7 @@ function addCard(idea) {
   var newCard = document.querySelector("#bottom");
   cardField.className = "card-field";
   cardField.innerHTML = 
-     `<div data-id='${idea.id}'>
+     `<div data-id=${idea.id}>
        <div class="div-top">
           <h2 id="title-output">${idea.title}</h2>
           <p id="body-output">${idea.body}</p>
@@ -96,7 +105,7 @@ function addCard(idea) {
             <p>Quality: ${idea.quality}</p>
           </aside>
           <aside id="card-footer-right">
-            <button data-id="${idea.id}" onclick="deleteCard(${idea.id})" id="delete-btn" class="delete"><img src="media/delete.svg">
+            <button data-id=${idea.id} onclick="deleteCard(${idea.id})" id="delete-btn" class="delete"><img src="media/delete.svg">
               <div class="overlay delete"></div></button>
           </aside>
       </div>
