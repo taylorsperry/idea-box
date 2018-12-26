@@ -87,3 +87,7 @@ function manipulateCard(event) {
 function deleteCard() {
   event.target.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
 }
+
+function upQuality() {
+  
+}
