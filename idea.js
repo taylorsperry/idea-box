@@ -20,7 +20,8 @@ class Idea {
 
   }
 
-  updateQuality() {
-// go for the this.id maaaan
+  updateQuality(qualityParam) {
+    this.quality = qualityParam;
+    this.saveToStorage();
   }
 }
