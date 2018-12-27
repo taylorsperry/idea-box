@@ -1,5 +1,4 @@
 /// Global Variables ///
-
 var searchInput = document.querySelector(".search-bar");
 
 var titleInput = document.querySelector("#title");
@@ -9,8 +8,6 @@ var bodyInput = document.querySelector("#body");
 var searchButton = document.querySelector("#search-btn");
 
 var saveButton = document.querySelector("#save-btn");
-
-// var upButton = document.querySelector("#up-btn");
 
 var createdIdeaCards = document.querySelector("#bottom");
 
@@ -22,22 +19,21 @@ var qualitiesArray = ["Swill", "Plausible, Genius"];
 function upQuality(event) {
   var uniqueID = event.target.parentElement.parentElement.parentElement.parentElement.dataset.id;
   var foundIdea = ideaArray.find(function(idea) {
-    console.log(idea.id, uniqueID)
     return idea.id === parseInt(uniqueID)
-})
-    
+})   
   if (event.target.id === "up") {
-      var quality = event.target.parentElement.nextSibling.nextSibling.innerText 
-        if (quality === "Quality: Swill") {
-          event.target.parentElement.nextSibling.nextSibling.innerText = "Quality: Plausible" 
-          foundIdea.quality = "Plausible"
-        } else if (quality === "Quality: Plausible") {
-          event.target.parentElement.nextSibling.nextSibling.innerText = "Quality: Genius"
-          foundIdea.quality = "Genius"
+      var quality = event.target.parentElement.nextSibling.nextSibling.childNodes[1] 
+      console.log(quality + " up")
+        if (quality.innerText === "Swill") {
+          quality.innerText = "Plausible"
+              foundIdea.updateQuality("Plausible");
+        } else if (quality.innerText === "Plausible") {
+          quality.innerText = "Genius"
+          foundIdea.updateQuality("Genius")
       }
     }
-  foundIdea.saveToStorage()
 }
+
 
 function downQuality(event) {
   var uniqueID = event.target.parentElement.parentElement.parentElement.parentElement.dataset.id;
@@ -45,17 +41,19 @@ function downQuality(event) {
     return idea.id === parseInt(uniqueID)
 })   
   if (event.target.id === "down") {
-      var quality = event.target.parentElement.nextSibling.nextSibling.nextSibling.nextSibling.innerText 
-      console.log(quality + " quality");
-        if (event.target.parentElement.nextSibling.nextSibling.nextSibling.nextSibling.innerText === "Quality: Genius") {
-          event.target.parentElement.nextSibling.nextSibling.nextSibling.nextSibling.innerText = "Quality: Plausible" 
-          foundIdea.quality = "Plausible"
-        } else if (quality === "Quality: Plausible") {
-          event.target.parentElement.nextSibling.nextSibling.nextSibling.nextSibling.innerText = "Quality: Swill"
-          foundIdea.quality = "Swill"
+      var quality = event.target.parentElement.nextSibling.nextSibling.nextSibling.nextSibling.childNodes[1].innerText; 
+      console.log(quality);
+        if (event.target.parentElement.nextSibling.nextSibling.nextSibling.nextSibling.childNodes[1].innerText === "Genius") {
+          event.target.parentElement.nextSibling.nextSibling.nextSibling.nextSibling.childNodes[1].innerText = "Plausible" 
+          foundIdea.updateQuality("Plausible")
+          quality = "Plausible"
+        } else if (quality === "Plausible") {
+          event.target.parentElement.nextSibling.nextSibling.nextSibling.nextSibling.childNodes[1].innerText = "Swill"
+          quality = "Swill"
+          foundIdea.updateQuality("Swill")
       }
     }
-  foundIdea.saveToStorage()
+
 }
 
 
@@ -85,7 +83,7 @@ function reloadCards() {
   var thisCard = JSON.parse(localStorage.getItem(key))
   addCard(thisCard);
   
-  var newIdea = new Idea(thisCard.id, thisCard.title, thisCard.body);
+  var newIdea = new Idea(thisCard.id, thisCard.title, thisCard.body, thisCard.quality);
   ideaArray.push(newIdea);
  })
 }
@@ -122,7 +120,7 @@ function addCard(idea) {
               <img src="media/upvote.svg">
               <div class="overlay" id="up"></div>
             </button>
-            <p>Quality: ${idea.quality}</p>
+            <p>Quality: <span>${idea.quality}</span></p>
           </aside>
           <aside id="card-footer-right">
             <button data-id=${idea.id} onclick="deleteCard(${idea.id})" id="delete-btn" class="delete"><img src="media/delete.svg">
