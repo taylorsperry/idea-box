@@ -23,7 +23,7 @@ function upQuality(event) {
   var uniqueID = event.target.parentElement.parentElement.parentElement.parentElement.dataset.id;
   var foundIdea = ideaArray.find(function(idea) {
     console.log(idea.id, uniqueID)
-    return idea.id == uniqueID
+    return idea.id === parseInt(uniqueID)
 })
     
   if (event.target.id === "up") {
@@ -39,6 +39,24 @@ function upQuality(event) {
   foundIdea.saveToStorage()
 }
 
+function downQuality(event) {
+  var uniqueID = event.target.parentElement.parentElement.parentElement.parentElement.dataset.id;
+  var foundIdea = ideaArray.find(function(idea) {
+    return idea.id === parseInt(uniqueID)
+})   
+  if (event.target.id === "down") {
+      var quality = event.target.parentElement.nextSibling.nextSibling.nextSibling.nextSibling.innerText 
+      console.log(quality + " quality");
+        if (event.target.parentElement.nextSibling.nextSibling.nextSibling.nextSibling.innerText === "Quality: Genius") {
+          event.target.parentElement.nextSibling.nextSibling.nextSibling.nextSibling.innerText = "Quality: Plausible" 
+          foundIdea.quality = "Plausible"
+        } else if (quality === "Quality: Plausible") {
+          event.target.parentElement.nextSibling.nextSibling.nextSibling.nextSibling.innerText = "Quality: Swill"
+          foundIdea.quality = "Swill"
+      }
+    }
+  foundIdea.saveToStorage()
+}
 
 
 //Event Listeners//
@@ -49,6 +67,8 @@ saveButton.addEventListener("click", uponSaveClick);
 createdIdeaCards.addEventListener("click", manipulateCard);
 
 createdIdeaCards.addEventListener("click", upQuality);
+
+createdIdeaCards.addEventListener("click", downQuality);
 
 
 
