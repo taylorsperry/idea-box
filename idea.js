@@ -12,7 +12,8 @@ class Idea {
   }
 
   deleteFromStorage() {
-// go for the this.id maaaan
+    var stringIdea = JSON.stringify(this);
+    localStorage.removeItem(this.id, stringIdea);
   }
 
   updateContent() {
