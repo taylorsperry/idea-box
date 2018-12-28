@@ -1,4 +1,6 @@
-/// Global Variables ///
+//////
+//Global Variables
+//////
 var searchInput = document.querySelector(".search-bar");
 
 var titleInput = document.querySelector("#title");
@@ -12,54 +14,10 @@ var saveButton = document.querySelector("#save-btn");
 var createdIdeaCards = document.querySelector("#bottom");
 
 var ideaArray = [];
-console.log(localStorage);
 
-var qualitiesArray = ["Swill", "Plausible, Genius"];
-
-function upQuality(event) {
-  var uniqueID = event.target.parentElement.parentElement.parentElement.parentElement.dataset.id;
-  var foundIdea = ideaArray.find(function(idea) {
-    return idea.id === parseInt(uniqueID)
-})   
-  if (event.target.id === "up") {
-      var quality = event.target.parentElement.nextSibling.nextSibling.childNodes[1] 
-      console.log(quality + " up")
-        if (quality.innerText === "Swill") {
-          quality.innerText = "Plausible"
-              foundIdea.updateQuality("Plausible");
-        } else if (quality.innerText === "Plausible") {
-          quality.innerText = "Genius"
-          foundIdea.updateQuality("Genius")
-      }
-    }
-}
-
-
-function downQuality(event) {
-  var uniqueID = event.target.parentElement.parentElement.parentElement.parentElement.dataset.id;
-  var foundIdea = ideaArray.find(function(idea) {
-    return idea.id === parseInt(uniqueID)
-})   
-  if (event.target.id === "down") {
-      var quality = event.target.parentElement.nextSibling.nextSibling.nextSibling.nextSibling.childNodes[1].innerText; 
-      console.log(quality);
-        if (event.target.parentElement.nextSibling.nextSibling.nextSibling.nextSibling.childNodes[1].innerText === "Genius") {
-          event.target.parentElement.nextSibling.nextSibling.nextSibling.nextSibling.childNodes[1].innerText = "Plausible" 
-          foundIdea.updateQuality("Plausible")
-          quality = "Plausible"
-        } else if (quality === "Plausible") {
-          event.target.parentElement.nextSibling.nextSibling.nextSibling.nextSibling.childNodes[1].innerText = "Swill"
-          quality = "Swill"
-          foundIdea.updateQuality("Swill")
-      }
-    }
-
-}
-
-
-//Event Listeners//
-// upButton.addEventListener("click", upQuality);
-
+//////
+//EVENT LISTENERS
+//////
 saveButton.addEventListener("click", uponSaveClick);
 
 createdIdeaCards.addEventListener("click", manipulateCard);
@@ -68,21 +26,18 @@ createdIdeaCards.addEventListener("click", upQuality);
 
 createdIdeaCards.addEventListener("click", downQuality);
 
-
-
 //classList THEN call deleteCard function / up / down vote functions
 
-//////Functions/////
+//////
+// FUNCTIONS
+/////
 
-//reload cards
 reloadCards();
 
-function reloadCards() {
-
+function reloadCards(e) {
  Object.keys(localStorage).forEach(function(key) {
   var thisCard = JSON.parse(localStorage.getItem(key))
   addCard(thisCard);
-  
   var newIdea = new Idea(thisCard.id, thisCard.title, thisCard.body, thisCard.quality);
   ideaArray.push(newIdea);
  })
@@ -90,16 +45,13 @@ function reloadCards() {
 
 function uponSaveClick(e) {
   e.preventDefault();
-  // addToStorage();
   var newIdea = new Idea(Date.now(), titleInput.value, bodyInput.value);
   newIdea.saveToStorage();
   ideaArray.push(newIdea);
-  console.log(ideaArray);
   addCard(newIdea);
   document.querySelector(".content").reset();
 } 
 
-// appends cards to 'bottom' section
 function addCard(idea) {
   var cardField = document.createElement("section");
   var newCard = document.querySelector("#bottom");
@@ -142,3 +94,38 @@ function deleteCard() {
   event.target.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
 }
 
+function upQuality(event) {
+  var uniqueID = event.target.parentElement.parentElement.parentElement.parentElement.dataset.id;
+  var foundIdea = ideaArray.find(function(idea) {
+    return idea.id === parseInt(uniqueID)
+})   
+  if (event.target.id === "up") {
+      var quality = event.target.parentElement.nextSibling.nextSibling.childNodes[1] 
+        if (quality.innerText === "Swill") {
+          quality.innerText = "Plausible"
+              foundIdea.updateQuality("Plausible");
+        } else if (quality.innerText === "Plausible") {
+          quality.innerText = "Genius"
+          foundIdea.updateQuality("Genius")
+      }
+   }
+}
+
+function downQuality(event) {
+  var uniqueID = event.target.parentElement.parentElement.parentElement.parentElement.dataset.id;
+  var foundIdea = ideaArray.find(function(idea) {
+    return idea.id === parseInt(uniqueID)
+})   
+  if (event.target.id === "down") {
+      var quality = event.target.parentElement.nextSibling.nextSibling.nextSibling.nextSibling.childNodes[1].innerText; 
+        if (event.target.parentElement.nextSibling.nextSibling.nextSibling.nextSibling.childNodes[1].innerText === "Genius") {
+          event.target.parentElement.nextSibling.nextSibling.nextSibling.nextSibling.childNodes[1].innerText = "Plausible" 
+          foundIdea.updateQuality("Plausible")
+          quality = "Plausible"
+        } else if (quality === "Plausible") {
+          event.target.parentElement.nextSibling.nextSibling.nextSibling.nextSibling.childNodes[1].innerText = "Swill"
+          quality = "Swill"
+          foundIdea.updateQuality("Swill")
+      }
+    }
+}
