@@ -17,6 +17,7 @@ var swillButton = document.querySelector(".swill-btn");
 var plausibleButton = document.querySelector(".plausible-btn");
 var geniusButton = document.querySelector(".genius-btn");
 
+var searchBar = document.querySelector(".search-bar");
 
 var swillArray;
 
@@ -39,6 +40,8 @@ plausibleButton.addEventListener("click", filterByPlausible);
 
 geniusButton.addEventListener("click", filterByGenius);
 
+searchBar.addEventListener("keyup", filterInSearch);
+
 
 
 //classList THEN call deleteCard function / up / down vote functions
@@ -49,6 +52,19 @@ geniusButton.addEventListener("click", filterByGenius);
 
 reloadCards();
 
+function filterInSearch() {
+  var inputSearch = searchBar.value.toUpperCase();
+  var filteredSearch = ideaArray.filter(function (idea) {
+    var titleSearch = idea.title.toUpperCase(); 
+    var bodySearch = idea.body.toUpperCase();
+    return titleSearch.includes(inputSearch) || bodySearch.includes(inputSearch)
+  });
+  var newCard = document.querySelector("#bottom");
+  newCard.innerHTML = "";
+  filteredSearch.forEach(function(idea) {
+    addCard(idea)
+  });
+}
 
 function filterBySwill() {
   swillArray = ideaArray.filter(function(currentIdea) {
