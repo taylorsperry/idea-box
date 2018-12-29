@@ -472,3 +472,12 @@ div.overlay:hover {
     width: 100%;
   }
 }
+
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: block;
+}
+
