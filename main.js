@@ -17,7 +17,6 @@ var swillButton = document.querySelector(".swill-btn");
 var plausibleButton = document.querySelector(".plausible-btn");
 var geniusButton = document.querySelector(".genius-btn");
 
-
 var swillArray;
 
 var ideaArray = [];
@@ -124,7 +123,7 @@ function addCard(idea) {
             <p>Quality: <span>${idea.quality}</span></p>
           </aside>
           <aside id="card-footer-right">
-            <button data-id=${idea.id} onclick="deleteCard(${idea.id})" id="delete-btn" class="delete"><img src="media/delete.svg">
+            <button id="delete-btn" class="delete"><img src="media/delete.svg">
               <div class="overlay delete"></div></button>
           </aside>
       </div>
@@ -140,6 +139,12 @@ function manipulateCard(event) {
 }
 
 function deleteCard() {
+  var uniqueID = event.target.parentElement.parentElement.parentElement.parentElement.dataset.id;
+  var index = ideaArray.findIndex(function(idea) {
+    return idea.id === parseInt(uniqueID);
+  });
+  ideaArray[index].deleteFromStorage();
+  ideaArray.splice(index, 1);
   event.target.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
 }
 
