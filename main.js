@@ -23,7 +23,7 @@ function upQuality(event) {
 })   
   if (event.target.id === "up") {
       var quality = event.target.parentElement.nextSibling.nextSibling.childNodes[1] 
-      console.log(quality + " up")
+      // console.log(quality + " up")
         if (quality.innerText === "Swill") {
           quality.innerText = "Plausible"
               foundIdea.updateQuality("Plausible");
@@ -123,7 +123,7 @@ function addCard(idea) {
             <p>Quality: <span>${idea.quality}</span></p>
           </aside>
           <aside id="card-footer-right">
-            <button data-id=${idea.id} onclick="deleteCard(${idea.id})" id="delete-btn" class="delete"><img src="media/delete.svg">
+            <button id="delete-btn" class="delete"><img src="media/delete.svg">
               <div class="overlay delete"></div></button>
           </aside>
       </div>
@@ -139,6 +139,14 @@ function manipulateCard(event) {
 }
 
 function deleteCard() {
+  var uniqueID = event.target.parentElement.parentElement.parentElement.parentElement.dataset.id;
+  var index = ideaArray.findIndex(function(idea) {
+    return idea.id === parseInt(uniqueID);
+  });
+  ideaArray[index].deleteFromStorage();
+  ideaArray.splice(index, 1);
   event.target.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
 }
+
+
 
