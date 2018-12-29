@@ -13,6 +13,13 @@ var saveButton = document.querySelector("#save-btn");
 
 var createdIdeaCards = document.querySelector("#bottom");
 
+var swillButton = document.querySelector(".swill-btn");
+var plausibleButton = document.querySelector(".plausible-btn");
+var geniusButton = document.querySelector(".genius-btn");
+
+
+var swillArray;
+
 var ideaArray = [];
 
 //////
@@ -26,6 +33,14 @@ createdIdeaCards.addEventListener("click", upQuality);
 
 createdIdeaCards.addEventListener("click", downQuality);
 
+swillButton.addEventListener("click", filterBySwill);
+
+plausibleButton.addEventListener("click", filterByPlausible);
+
+geniusButton.addEventListener("click", filterByGenius);
+
+
+
 //classList THEN call deleteCard function / up / down vote functions
 
 //////
@@ -34,7 +49,41 @@ createdIdeaCards.addEventListener("click", downQuality);
 
 reloadCards();
 
-function reloadCards(e) {
+
+function filterBySwill() {
+  swillArray = ideaArray.filter(function(currentIdea) {
+    return currentIdea.quality === "Swill";
+  })
+    var newCard = document.querySelector("#bottom");
+    newCard.innerHTML = "";
+    swillArray.forEach(function(idea) {
+    addCard(idea);
+    })
+}
+
+function filterByPlausible() {
+  plausibleArray = ideaArray.filter(function(currentIdea) {
+    return currentIdea.quality === "Plausible";
+  })
+      var newCard = document.querySelector("#bottom");
+    newCard.innerHTML = "";
+    plausibleArray.forEach(function(idea) {
+    addCard(idea);
+    })
+} 
+
+function filterByGenius() {
+  geniusArray = ideaArray.filter(function(currentIdea) {
+    return currentIdea.quality === "Genius";
+  })
+      var newCard = document.querySelector("#bottom");
+    newCard.innerHTML = "";
+    geniusArray.forEach(function(idea) {
+    addCard(idea);
+    })
+}
+
+function reloadCards() {
  Object.keys(localStorage).forEach(function(key) {
   var thisCard = JSON.parse(localStorage.getItem(key))
   addCard(thisCard);
