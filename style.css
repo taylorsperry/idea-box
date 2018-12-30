@@ -12,7 +12,10 @@ body {
 }
 
 input:focus,
-textarea:focus {
+textarea:focus,
+h2:focus,
+p:focus,
+button:focus {
   outline: none;
 }
 
