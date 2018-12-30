@@ -433,8 +433,16 @@ div.overlay:hover {
 
   .genius-btn,
   .plausible-btn,
-  .swill-btn {
-    width: 32%;
+  .swill-btn,
+  .all-btn {
+    width: 24%;
+  }
+
+  .genius-btn:hover,
+  .plausible-btn:hover,
+  .swill-btn:hover,
+  .all-btn:hover {
+    width: 24%;
   }
 
   form.content {
@@ -464,7 +472,8 @@ div.overlay:hover {
 
   .genius-btn,
   .plausible-btn,
-  .swill-btn {
+  .swill-btn,
+  .all-btn {
     width: 100%;
     font-size: 5vw;
     margin-top: 15px;
@@ -472,7 +481,8 @@ div.overlay:hover {
 
   .genius-btn:hover,
   .plausible-btn:hover,
-  .swill-btn:hover {
+  .swill-btn:hover,
+  .all-btn:hover {
     width: 100%;
   }
 }
