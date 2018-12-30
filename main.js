@@ -35,6 +35,10 @@ createdIdeaCards.addEventListener("click", upQuality);
 
 createdIdeaCards.addEventListener("click", downQuality);
 
+createdIdeaCards.addEventListener("keydown", function(event) {
+  editCard(event );
+});
+
 swillButton.addEventListener("click", filterBySwill);
 
 plausibleButton.addEventListener("click", filterByPlausible);
@@ -45,7 +49,6 @@ searchBar.addEventListener("keyup", filterInSearch);
 
 
 
-//classList THEN call deleteCard function / up / down vote functions
 
 //////
 // FUNCTIONS
@@ -125,8 +128,8 @@ function addCard(idea) {
   cardField.innerHTML = 
      `<div data-id=${idea.id}>
        <div class="div-top">
-          <h2 id="title-output">${idea.title}</h2>
-          <p id="body-output">${idea.body}</p>
+          <h2 id="title-output" contenteditable="true" class="edit">${idea.title}</h2>
+          <p id="body-output" contenteditable="true" class="edit">${idea.body}</p>
         </div>
         <div class="div-bottom">
           <aside id="card-footer-left">
@@ -141,7 +144,7 @@ function addCard(idea) {
             <p>Quality: <span>${idea.quality}</span></p>
           </aside>
           <aside id="card-footer-right">
-            <button id="delete-btn" class="delete"><img src="media/delete.svg">
+            <button id="delete-btn"><img src="media/delete.svg">
               <div class="overlay delete"></div></button>
           </aside>
       </div>
@@ -153,6 +156,9 @@ function addCard(idea) {
 function manipulateCard(event) {
   if (event.target.classList.contains("delete")) {
     deleteCard();
+  }
+  if (event.target.classList.contains("edit")) {
+    editCard();
   }
 }
 
@@ -184,6 +190,7 @@ function upQuality(event) {
 }
 
 function downQuality(event) {
+  event.preventDefault();
   var uniqueID = event.target.parentElement.parentElement.parentElement.parentElement.dataset.id;
   var foundIdea = ideaArray.find(function(idea) {
     return idea.id === parseInt(uniqueID)
@@ -201,3 +208,37 @@ function downQuality(event) {
       }
     }
 }
+
+var editTitle;
+var editBody; 
+
+function editCard(event) {
+  if(!event){
+    return
+  }
+  var uniqueID = event.target.parentElement.parentElement.dataset.id;
+  var editIdea = ideaArray.find(function(idea) {
+    return idea.id === parseInt(uniqueID);
+    })
+  if (event.target.id === 'title-output') {
+    editTitle = event.target.innerText;
+    editIdea.title = editTitle;
+    editIdea.saveToStorage();
+  }
+   if (event.target.id === 'body-output') {
+    editBody = event.target.innerText;
+    editIdea.body = editBody;
+    editIdea.saveToStorage();
+  }
+  if (event.keyCode === 13) {
+    event.target.toggleAttribute('contenteditable');
+  }
+  if (event.keyCode === 13) {
+    event.target.toggleAttribute('contenteditable');
+  }
+ }
+
+
+
+
+

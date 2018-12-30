@@ -16,13 +16,10 @@ class Idea {
     localStorage.removeItem(this.id, stringIdea);
   }
 
-  updateContent() {
-// go for the this.id maaaan
-
-  }
-
   updateQuality(qualityParam) {
     this.quality = qualityParam;
     this.saveToStorage();
   }
+
+  // do we even need updateContent?
 }
