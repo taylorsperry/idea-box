@@ -180,11 +180,11 @@ function upQuality(event) {
   if (event.target.id === "up") {
       var quality = event.target.parentElement.nextSibling.nextSibling.childNodes[1] 
         if (quality.innerText === "Swill") {
-          quality.innerText = "Plausible"
-              foundIdea.updateQuality("Plausible");
+          quality.innerText = "Plausible";
+          foundIdea.updateQuality("Plausible");
         } else if (quality.innerText === "Plausible") {
-          quality.innerText = "Genius"
-          foundIdea.updateQuality("Genius")
+          quality.innerText = "Genius";
+          foundIdea.updateQuality("Genius");
       }
    }
 }
