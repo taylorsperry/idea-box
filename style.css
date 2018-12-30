@@ -1,4 +1,4 @@
-      /*---GENERAL---*/
+/*----------GENERAL----------*/
 * {
   box-sizing: border-box;
   font-family: Open Sans;
@@ -31,11 +31,6 @@ textarea::placeholder {
 input:focus::placeholder,
 textarea:focus::placeholder {
   color: white;
-}
-
-textarea,
-input {
-  transition: all .2s ease;
 }
 
 textarea {
@@ -105,14 +100,12 @@ div.hamburger {
 div.burger {
   width: 100%;
   height: 20%;
-  /*background: #D2CCCD;*/
   background: #b2a3d0;
   border-radius: 2px;
   transition: all .2s ease;
 }
 
 div.hamburger:hover .burger {
-  /*background: #6e646b;*/
   background: #9785bb;
 }
 
@@ -135,10 +128,7 @@ div.hamburger:hover .burger {
   display: block;
 }
 
-.genius-btn,
-.plausible-btn,
-.swill-btn,
-.all-btn {
+.quality-sort {
   width: 200px;
   height: 50px;
   background: #d2cccd;
@@ -151,20 +141,12 @@ div.hamburger:hover .burger {
   font-weight: 800;
 }
 
-.genius-btn:hover,
-.plausible-btn:hover,
-.swill-btn:hover,
-.all-btn:hover {
-  width: 200px;
-  height: 50px;
+.quality-sort:hover {
   background: #6e646b;
   color: #d2cccd;
 }
 
-.genius-btn:focus,
-.plausible-btn:focus,
-.swill-btn:focus,
-.all-btn:focus {
+.quality-sort:focus {
   color: #6e646b;
   background: #524649;
 }
@@ -236,7 +218,6 @@ form.content {
 #body {
   display: flex;
   height: 150px;
-  text-align: ;
 }
 
 label {
@@ -307,15 +288,16 @@ article.idea-card {
   height: 50px;
   justify-content: space-between;
   padding: 5px;
+  transition: all .2s ease;
 }
 
-#card-footer-left {
+#card-bottom-left {
   align-items: center;
   display: flex;
   width: 45%;
 }
 
-#card-footer-right {
+#card-bottom-right {
   align-items: center;
   display: flex;
   justify-content: flex-end;
@@ -439,17 +421,7 @@ div.overlay:hover {
     display: flex;
   }
 
-  .genius-btn,
-  .plausible-btn,
-  .swill-btn,
-  .all-btn {
-    width: 24%;
-  }
-
-  .genius-btn:hover,
-  .plausible-btn:hover,
-  .swill-btn:hover,
-  .all-btn:hover {
+  .quality-sort {
     width: 24%;
   }
 
@@ -478,19 +450,9 @@ div.overlay:hover {
     align-items: center;
   }
 
-  .genius-btn,
-  .plausible-btn,
-  .swill-btn,
-  .all-btn {
+  .quality-sort {
     width: 100%;
     font-size: 5vw;
     margin-top: 15px;
-  }
-
-  .genius-btn:hover,
-  .plausible-btn:hover,
-  .swill-btn:hover,
-  .all-btn:hover {
-    width: 100%;
   }
 }

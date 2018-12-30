@@ -130,7 +130,7 @@ function addCard(idea) {
           <p id="body-output" contenteditable="true" class="edit">${idea.body}</p>
         </div>
         <div class="div-bottom">
-          <aside id="card-footer-left">
+          <aside id="card-bottom-left">
             <button id="down-btn">
               <img src="media/downvote.svg">
               <div class="overlay down" id="down"></div>
@@ -141,7 +141,7 @@ function addCard(idea) {
             </button>
             <p>Quality: <span>${idea.quality}</span></p>
           </aside>
-          <aside id="card-footer-right">
+          <aside id="card-bottom-right">
             <button id="delete-btn"><img src="media/delete.svg">
               <div class="overlay delete"></div></button>
           </aside>
