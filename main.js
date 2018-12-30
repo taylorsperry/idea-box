@@ -35,9 +35,7 @@ createdIdeaCards.addEventListener("click", upQuality);
 
 createdIdeaCards.addEventListener("click", downQuality);
 
-createdIdeaCards.addEventListener("keydown", function(event) {
-  editCard(event );
-});
+createdIdeaCards.addEventListener("keydown", editCard);
 
 swillButton.addEventListener("click", filterBySwill);
 
@@ -209,29 +207,23 @@ function downQuality(event) {
     }
 }
 
-var editTitle;
-var editBody; 
-
 function editCard(event) {
   if(!event){
     return
   }
   var uniqueID = event.target.parentElement.parentElement.dataset.id;
-  var editIdea = ideaArray.find(function(idea) {
+  var foundIdea = ideaArray.find(function(idea) {
     return idea.id === parseInt(uniqueID);
     })
   if (event.target.id === 'title-output') {
-    editTitle = event.target.innerText;
-    editIdea.title = editTitle;
-    editIdea.saveToStorage();
+    var editTitle = event.target.innerText;
+    foundIdea.title = editTitle;
+    foundIdea.updateContent();
   }
    if (event.target.id === 'body-output') {
-    editBody = event.target.innerText;
-    editIdea.body = editBody;
-    editIdea.saveToStorage();
-  }
-  if (event.keyCode === 13) {
-    event.target.toggleAttribute('contenteditable');
+    var editBody = event.target.innerText;
+    foundIdea.body = editBody;
+    foundIdea.updateContent();
   }
   if (event.keyCode === 13) {
     event.target.toggleAttribute('contenteditable');
