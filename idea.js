@@ -21,5 +21,8 @@ class Idea {
     this.saveToStorage();
   }
 
-  // do we even need updateContent?
+  updateContent() {
+    var stringIdea = JSON.stringify(this);
+    localStorage.setItem(this.id, stringIdea);
+  }
 }
