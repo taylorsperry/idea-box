@@ -14,7 +14,7 @@ var createdIdeaCards = document.querySelector("#bottom");
 var swillButton = document.querySelector(".swill-btn");
 var plausibleButton = document.querySelector(".plausible-btn");
 var geniusButton = document.querySelector(".genius-btn");
-
+var allButton = document.querySelector(".all-btn");
 
 var searchBar = document.querySelector(".search-bar");
 
@@ -35,10 +35,9 @@ createdIdeaCards.addEventListener("click", downQuality);
 createdIdeaCards.addEventListener("keydown", editCard);
 
 swillButton.addEventListener("click", filterBySwill);
-
 plausibleButton.addEventListener("click", filterByPlausible);
-
 geniusButton.addEventListener("click", filterByGenius);
+allButton.addEventListener("click", filterByAll);
 
 searchBar.addEventListener("keyup", filterInSearch);
 
@@ -93,6 +92,10 @@ function filterByGenius() {
     geniusArray.forEach(function(idea) {
     addCard(idea);
     })
+}
+
+function filterByAll() {
+  location.reload();
 }
 
 function reloadCards() {
