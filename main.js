@@ -1,6 +1,4 @@
-//////
-//Global Variables
-//////
+// --------------------GLOBAL VARIABLES--------------------
 var searchInput = document.querySelector(".search-bar");
 
 var titleInput = document.querySelector("#title");
@@ -24,10 +22,9 @@ var swillArray;
 
 var ideaArray = [];
 
-//////
-//EVENT LISTENERS
-//////
-saveButton.addEventListener("click", uponSaveClick);
+// --------------------EVENT LISTENERS--------------------
+saveButton.addEventListener("click", enableSaveButton);
+// saveButton.addEventListener("click", uponSaveClick);
 
 createdIdeaCards.addEventListener("click", manipulateCard);
 
@@ -47,10 +44,7 @@ searchBar.addEventListener("keyup", filterInSearch);
 
 
 
-//////
-// FUNCTIONS
-/////
-
+// --------------------FUNCTIONS--------------------
 reloadCards();
 
 function filterInSearch() {
@@ -114,7 +108,6 @@ function reloadCards() {
 }
 
 function uponSaveClick(e) {
-  e.preventDefault();
   var newIdea = new Idea(Date.now(), titleInput.value, bodyInput.value);
   newIdea.saveToStorage();
   ideaArray.push(newIdea);
@@ -231,5 +224,24 @@ function editCard(event) {
   if (event.keyCode === 13) {
     event.target.toggleAttribute('contenteditable');
   }
- }
+}
 
+
+titleInput.addEventListener("keyup", styleSaveButton);
+bodyInput.addEventListener("keyup", styleSaveButton);
+
+function styleSaveButton() {
+  if (titleInput.value.length > 0 && bodyInput.value.length > 0) {
+    saveButton.classList.remove("disabled-btn");
+  } else {
+    saveButton.classList.add("disabled-btn");
+  }
+}
+
+function enableSaveButton(e) {
+  e.preventDefault();
+  if (titleInput.value.length > 0 && bodyInput.value.length > 0) {
+    uponSaveClick();
+    saveButton.classList.add("disabled-btn");
+  }
+}
