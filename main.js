@@ -52,24 +52,15 @@ bodyInput.addEventListener("keyup", styleSaveButton);
 
 // --------------------FUNCTIONS--------------------
 
-// reloadCards();
+reloadCards();
 
-// function reloadCards() {
-//  Object.keys(localStorage).forEach(function(key) {
-//   var thisCard = JSON.parse(localStorage.getItem(key))
-//   addCard(thisCard);
-//   var newIdea = new Idea(thisCard.id, thisCard.title, thisCard.body, thisCard.quality);
-//   ideaArray.push(newIdea);
-//  })
-// }
-window.onload = function() {
- var keys = Object.keys(localStorage);
- for (var i = 0; i < 10; i++) {
-   var thisCard = JSON.parse(localStorage.getItem(keys[i]));
-   addCard(thisCard);
-   var newIdea = new Idea(thisCard.id, thisCard.title, thisCard.body, thisCard.quality);
-   ideaArray.push(newIdea);
- }
+function reloadCards() {
+ Object.keys(localStorage).forEach(function(key) {
+  var thisCard = JSON.parse(localStorage.getItem(key))
+  addCard(thisCard);
+  var newIdea = new Idea(thisCard.id, thisCard.title, thisCard.body, thisCard.quality);
+  ideaArray.push(newIdea);
+ })
 }
 
 function styleSaveButton() {
