@@ -1,4 +1,4 @@
-/*----------GENERAL----------*/
+/*--------------------GENERAL--------------------*/
 * {
   box-sizing: border-box;
   font-family: Open Sans;
@@ -37,7 +37,7 @@ textarea {
   padding: 5px;
 }
 
-/*---INPUTS---*/
+/*-------------INPUTS-------------*/
 input,
 textarea,
 .idea-card {
@@ -52,7 +52,7 @@ textarea,
 }
 
 
-      /*---HEADER---*/
+      /*-------------HEADER-------------*/
 
 header {
   background: #524649;
@@ -89,6 +89,8 @@ h1 span {
   color: #b2a3d0;
 }
 
+/*--------------------HAMBURGER--------------------*/
+
 div.hamburger {
   width: 40px;
   height: 40px;
@@ -108,8 +110,6 @@ div.burger {
 div.hamburger:hover .burger {
   background: #9785bb;
 }
-
-/*----------------------------------*/
 
 .dropdown {
   position: relative;
@@ -151,7 +151,7 @@ div.hamburger:hover .burger {
   background: #524649;
 }
 
-/*-------------------------------------*/
+/*--------------------SEARCH--------------------*/
 
 .search-bar {
   border-radius: 5px 0px 0px 5px;
@@ -225,7 +225,8 @@ label {
   margin-top: 32px;  
 }
 
-#save-btn {
+#save-btn,
+#show-more {
   background: #6E646B;
   border-radius: 5px;
   border: none;
@@ -237,7 +238,8 @@ label {
   transition: all .2s ease;
 }
 
-#save-btn:hover {
+#save-btn:hover,
+#show-more:hover {
   background: #524749;
   color: #eaeaea;
 }
@@ -254,7 +256,7 @@ section.content {
 }
 
 
-      /*---IDEA CARDS---*/
+      /*-------------IDEA CARDS-------------*/
 
 article.idea-card {
   height: 100%;
@@ -352,14 +354,25 @@ div.overlay:hover {
   color: #6e6b6f;
 }
 
+#show-more {
+  display: none;
+  margin-top: 30px;
+  font-size: 20px;
+  height: 40px;
+}
 
-/*----------MEDIA QUERIES----------*/
+#show-more.visible {
+  display: inline-block;
+}
 
 
-    /*-----iPAD SIZE-----*/
+/*c--------------------MEDIA QUERIES--------------------*/
+
+
+    /*---------------iPAD SIZE---------------*/
 @media only screen and (max-width:960px) {
 
-  /*---HEADER---*/
+  /*-------------HEADER-------------*/
   header {
     align-items: center;
     height: 100%;
@@ -443,14 +456,14 @@ div.overlay:hover {
   }
 }
 
-/*-----PHONE SIZE-----*/
+/*---------------PHONE SIZE---------------*/
 @media only screen and (max-width:700px) {
 
   header {
     position: relative;
   }
 
-  /*---QUALITY SORT BUTTONS---*/
+  /*-------------QUALITY SORT BUTTONS-------------*/
   .drop-container {
     flex-direction: column;
     align-items: center;
