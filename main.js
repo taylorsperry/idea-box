@@ -164,22 +164,22 @@ function editCard(event) {
   var foundIdea = ideaArray.find(function(idea) {
     return idea.id === parseInt(uniqueID);
     })
-  if (event.target.id === 'title-output') {
+  if (event.target.id === "title-output") {
     var editTitle = event.target.innerText;
     foundIdea.title = editTitle;
     foundIdea.updateContent();
   }
-   if (event.target.id === 'body-output') {
+   if (event.target.id === "body-output") {
     var editBody = event.target.innerText;
     foundIdea.body = editBody;
     foundIdea.updateContent();
   }
   if (event.keyCode === 13) {
-    event.target.toggleAttribute('contenteditable');
+    event.target.toggleAttribute("contenteditable");
   }
 
   if (event.keyCode === 13) {
-    event.target.toggleAttribute('contenteditable');
+    event.target.toggleAttribute("contenteditable");
   }
 }
 
