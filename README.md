@@ -16,8 +16,5 @@ Our greatest struggle was in trying to find a way for the DOM to display only th
 - CSS
 - JavaScript
 
-## Features
-What makes your project stand out?
-
 ## Credits
 The participants in this project were Joshua Lavarine, Jacob Admire, and Taylor Sperry
