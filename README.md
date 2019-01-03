@@ -5,6 +5,8 @@ IdeaBox allows a user to create an "idea" with a title and body text, use up and
 
 Our greatest struggle was in trying to find a way for the DOM to display only the ten most recent ideas on page load. We knew we could use CSS to create a card field that could essentially hide overflow ideas, but we wanted to find a way to solve the problem with a JavaScript function. We attempted to reverse the idea array and then only iterate through that reversed array 10 times when appending ideas to the DOM, and also attempted to use the .length property to iterate through the last 10 indices in the array. Unfortunately, the closest we ever got was displaying the first ten ideas (rather than the ten most recent). 
 
+Our greatest achievement throughout the process was how well we worked together as a team. This was our second group project at Turing and we each brought different lessons we'd learned from our previous work. We implemented Agile processes, including regular team retros (both remote and in-person) and workflow tools (Trello and Slack), and completed tasks both as a group and individually by delegating responsibilities. 
+
 ## Screenshots
 #### Provided Full-Size Comp (Desktop version)
 ![screen shot 2019-01-03 at 8 00 29 am](https://user-images.githubusercontent.com/40274984/50644434-19f66080-0f2e-11e9-992b-375957a55dcb.png)
