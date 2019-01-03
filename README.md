@@ -32,4 +32,4 @@ Our greatest struggle was in trying to find a way for the DOM to display only th
 - JavaScript
 
 ## Credits
-The participants in this project were Joshua Lavarine, Jacob Admire, and Taylor Sperry
+The participants in this project were Jacob Admire, Joshua Lavarine, and Taylor Sperry
