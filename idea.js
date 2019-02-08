@@ -24,5 +24,6 @@ class Idea {
   updateContent() {
     var stringIdea = JSON.stringify(this);
     localStorage.setItem(this.id, stringIdea);
+    
   }
 }
