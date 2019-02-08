@@ -249,6 +249,7 @@ function filterByGenius() {
     })
 }
 
+
 function filterByAll() {
   location.reload();
 }
